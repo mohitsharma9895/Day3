@@ -14,4 +14,8 @@ jobs:
           uses: actions/checkout@v4
           # with:
           #   ref: faizan
-          
+  Job_2:
+    runs-on: self-hosted
+    steps:
+        - name: checkout repository
+          uses: actions/checkout@v4
