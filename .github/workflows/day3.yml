@@ -1,10 +1,10 @@
 name: demo day 3
-on: 
-  push:
-      branches:
-        - main
-        - dev
-  workflow_dispatch:
+on: workflow_dispatch
+  # push:
+  #     branches:
+  #       - main
+  #       - dev
+
 
 jobs:
   Job_1:
@@ -12,4 +12,6 @@ jobs:
     steps:
         - name: checkout repository
           uses: actions/checkout@v4
+          with:
+            ref: faizan
           
