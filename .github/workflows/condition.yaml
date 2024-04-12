@@ -1,0 +1,23 @@
+name: Conditional Steps based on Runner
+
+on:
+  workflow_dispatch:
+    inputs:
+      os:
+       description: 'Operating system for the runner (ubuntu, macOS, windows)'
+       required: true
+       default: 'ubuntu-latest'
+      
+jobs:
+  build:
+    runs-on: ${{ github.event.inputs.os }}
+    steps:
+           
+      - name: Run Ubuntu-specific task 
+        if: runner.os == 'Linux'  
+        run: echo "This step runs only on Ubuntu runners"
+
+      
+      - name: Run macOS specific task
+        if: runner.os != 'Linux'  
+        run: echo "This step runs only on macOS runners"
