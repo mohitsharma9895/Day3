@@ -1,0 +1,28 @@
+name: Deployment of k8
+
+on: 
+  push:
+     branches:
+        - main 
+  workflow_dispatch:
+
+jobs:
+    deploy_to_kubeernetes:
+      runs-on: ubuntu-latest
+      steps:
+        
+        - name: Check out repo's default branch
+          uses: actions/checkout@v4
+          
+        - name: Configure kubectl
+          uses: Azure/k8s-set-context@v1
+          with:
+            method: kubeconfig
+            kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
+
+        - name: deploy manifiest
+          run:
+              kubectl get no -n kube-system
+
+        
+        
