@@ -22,7 +22,13 @@ jobs:
 
         - name: deploy manifiest
           run:
-              kubectl get no -n kube-system
+              kubectl run po --image:nginx --dry-run=client -o yaml> pod.yaml
 
-        
+        - name: deploy file
+          run:
+              kubectl apply -f pod.yaml
+
+        - name: deploy file
+          run:
+              kubectl get po
         
